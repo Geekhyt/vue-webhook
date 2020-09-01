@@ -16,7 +16,7 @@ let server = http.createServer(function(req, res) {
             // github 请求来的时候，要传递请求体body、signature，你需要验签
             let signature = req.headers['x-hub-signature'];
             if(signature !== sign(body)) {
-                res.end('Not Allowed')
+                return res.end('Not Allowed')
             }
         })
         res.setHeader('Content-Type', 'application/json');
